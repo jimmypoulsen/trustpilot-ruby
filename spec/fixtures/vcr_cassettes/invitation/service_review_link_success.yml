@@ -1,0 +1,107 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.trustpilot.com/v1/oauth/oauth-business-users-for-applications/accesstoken
+    body:
+      encoding: US-ASCII
+      string: grant_type=password&username=federico%40goldbely.com&password=FILTERED_API_PASSWORD
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - Basic FILTERED_AUTH_TOKEN
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 23 Feb 2022 04:17:13 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '796'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "refresh_token_expires_in" : "7779999",
+          "refresh_token_status" : "approved",
+          "api_product_list" : "[trustpilot-client-api, public_data]",
+          "app_enduser" : "6007350f4c67e100298c61a3",
+          "api_product_list_json" : [ "trustpilot-client-api", "public_data" ],
+          "organization_name" : "trustpilot",
+          "developer.email" : "dev.accounts+developerapps@trustpilot.com",
+          "token_type" : "BearerToken",
+          "issued_at" : "1645589833516",
+          "client_id" : "FILTERED_API_KEY",
+          "access_token" : "FILTERED_ACCESS_TOKEN",
+          "refresh_token" : "PWy0CJY0WHDREgMlAVxeki2gGlgBPQUc",
+          "application_name" : "290fe20a-545a-4af5-a654-67e6bd03735d",
+          "scope" : "",
+          "refresh_token_issued_at" : "1645589833516",
+          "expires_in" : "359999",
+          "refresh_count" : "0",
+          "status" : "approved"
+        }
+  recorded_at: Wed, 23 Feb 2022 04:17:13 GMT
+- request:
+    method: post
+    uri: https://invitations-api.trustpilot.com/v1/private/business-units/FILTERED_BUSINESS_UNIT_ID/invitation-links
+    body:
+      encoding: US-ASCII
+      string: locationId=ABC123&referenceId=inv00001&email=federico%40goldbelly.com&name=Fede&locale=en-US&tags=tag1&tags=tag2&redirectUri=https%3A%2F%2Fgoldbelly.com
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - Bearer FILTERED_AUTH_TOKEN
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 23 Feb 2022 04:17:14 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '123'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Accept-Charset, Accept-Encoding, Accept-Language, Cache-Control,
+        Connection, Content-Length, Content-Type, Host, Origin, User-Agent, ApiKey,
+        X-Requested-With
+      Access-Control-Max-Age:
+      - '3628800'
+      Access-Control-Allow-Methods:
+      - GET, DELETE, POST, PUT, PATCH
+      Vary:
+      - Authorization
+      X-Robots-Tag:
+      - noindex
+      Cache-Control:
+      - no-cache
+    body:
+      encoding: UTF-8
+      string: '{"id":"81be73226625b8b765a020c20beb0f41","url":"https://www.trustpilot.com/evaluate-link/81be73226625b8b765a020c20beb0f41"}'
+  recorded_at: Wed, 23 Feb 2022 04:17:14 GMT
+recorded_with: VCR 6.0.0

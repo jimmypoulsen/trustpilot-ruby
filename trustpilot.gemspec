@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 lib = File.expand_path( 'lib', __dir__ )
 $LOAD_PATH.unshift( lib ) unless $LOAD_PATH.include?( lib )
 require 'trustpilot/version'
@@ -23,7 +25,7 @@ Gem::Specification.new do |spec|
     spec.metadata[ 'changelog_uri' ] = 'https://github.com/goldbely/trustpilot-ruby/blob/master/CHANGELOG.md'
   else
     raise 'RubyGems 2.0 or newer is required to protect against ' \
-      'public gem pushes.'
+          'public gem pushes.'
   end
 
   # Specify which files should be added to the gem when it is released.
@@ -36,7 +38,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = [ 'lib' ]
 
   spec.add_development_dependency 'bundler', '~> 2.3'
+  spec.add_development_dependency 'mock_redis', '~> 0.30'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'vcr', '~> 6.0'
+  spec.add_development_dependency 'webmock', '~> 3.14'
+
   spec.metadata[ 'rubygems_mfa_required' ] = 'true'
+  spec.required_ruby_version = '>= 2.7.0'
 end
