@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    trustpilot (0.1.2)
+    trustpilot (0.1.3)
 
 GEM
   remote: https://rubygems.org/
