@@ -4,7 +4,7 @@ require 'uri'
 
 module Trustpilot
   class Request
-    attr_reader :headers, :params, :path, :verb
+    attr_reader :headers, :params, :body, :path, :verb
 
     # Initializes a new request to the API
     #
@@ -13,9 +13,10 @@ module Trustpilot
     #   headers: { [key: string]: string }
     #   params: { [key: string]: string }
     #   verb: 'delete' | 'get' | 'patch' | 'post' | 'put'
-    def initialize path, headers: {}, params: {}, verb: 'get'
+    def initialize path, headers: {}, params: {}, body: {}, verb: 'get'
       @headers = headers
       @params = params
+      @body = body
       @path = path
       @verb = verb
     end
@@ -61,6 +62,7 @@ module Trustpilot
     def build_post
       req = Net::HTTP::Post.new uri.request_uri
       req.set_form_data params
+      req.body = body.to_s unless body.empty?
       req
     end
   end

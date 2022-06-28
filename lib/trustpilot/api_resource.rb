@@ -14,24 +14,24 @@ module Trustpilot
     #   auth_method: 'oauth' | 'key'
     #   params: { [key: string]: string }
     #   verb: 'delete', 'get', 'patch', 'post', 'put'
-    def request path, auth_method:, params: {}, verb: 'get'
+    def request path, auth_method:, params: {}, body: {}, verb: 'get'
       is_oauth = auth_method.to_s == 'oauth'
 
       MUTEX.synchronize do
         renew_token if is_oauth && Auth::Token.expired?
 
-        call_api path, verb, auth_method, params
+        call_api path, verb, auth_method, params, body
       rescue AuthenticationError
         # Invalid token/session, try again
         renew_token
-        call_api path, verb, auth_method, params
+        call_api path, verb, auth_method, params, body
       end
     end
 
     private
 
-    def call_api path, verb, auth_method, params
-      request = Request.new path, headers: auth_headers( auth_method ), params: params, verb: verb
+    def call_api path, verb, auth_method, params, body
+      request = Request.new path, headers: auth_headers( auth_method ), params: params, body: body, verb: verb
 
       Api.request request
     end

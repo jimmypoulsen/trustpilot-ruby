@@ -23,11 +23,12 @@ module Trustpilot
 
     # Send email invitation to a consumer.
     # https://developers.trustpilot.com/invitation-api#create-invitation(s)
-    def email params
+    def email body
       request(
         "https://invitations-api.trustpilot.com/v1/private/business-units/#{ business_unit_id }/email-invitations",
         auth_method: :oauth,
-        params: params,
+        params: {},
+        body: body,
         verb: 'post'
       )
     end
