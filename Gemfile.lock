@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    trustpilot (0.1.0)
+    trustpilot (0.1.2)
 
 GEM
   remote: https://rubygems.org/
@@ -39,9 +39,10 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-darwin-19
 
 DEPENDENCIES
-  bundler (~> 2.3)
+  bundler (~> 2.2)
   mock_redis (~> 0.30)
   rake (~> 10.0)
   rspec (~> 3.0)
