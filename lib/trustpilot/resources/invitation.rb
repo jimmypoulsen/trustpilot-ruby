@@ -20,5 +20,16 @@ module Trustpilot
         verb: 'post'
       )
     end
+
+    # Send email invitation to a consumer.
+    # https://developers.trustpilot.com/invitation-api#create-invitation(s)
+    def email params
+      request(
+        "https://invitations-api.trustpilot.com/v1/private/business-units/#{ business_unit_id }/email-invitations",
+        auth_method: :oauth,
+        params: params,
+        verb: 'post'
+      )
+    end
   end
 end
